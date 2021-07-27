@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import productDetailAction from '../redux/productDetail/productDetailAction';
-import { removeProductDetailAction } from '../redux/productDetail/productDetailAction';
 import axios from 'axios'
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productDetail.product);
-  console.log(product)
   const { image, title, price, category, description } = product;
 
   const fetchProductDetail = async () => {
@@ -21,7 +19,6 @@ const ProductDetails = () => {
   };
   useEffect(() => {
     if (productId && productId != "") fetchProductDetail();
-
   }, [productId])
   return (
     <div className="ui grid container">

@@ -1,13 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  
+  display:grid;
+  grid-template-columns:repeat(auto-fill,200px);
+`
 const Product = () => {
   const products = useSelector(state => state.product.products);
 
   return products.map((product) => {
     const { id, image, title, price, categroy } = product;
     return (
-      <div className='four wide column stackable' key={id}>
+      <Container  key={id}>
         <Link to={`/product/${id}`} >
           <div className="ui link cards">
             <div className="card">
@@ -22,7 +29,7 @@ const Product = () => {
             </div>
           </div>
         </Link>
-      </div>
+      </Container>
 
     )
   })
